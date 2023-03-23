@@ -14,6 +14,10 @@
 		B3C05A8D29C8DFEB007F24A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C05A8C29C8DFEB007F24A8 /* Assets.xcassets */; };
 		B3C05A9029C8DFEB007F24A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C05A8E29C8DFEB007F24A8 /* LaunchScreen.storyboard */; };
 		B3C05A9B29C8E0AA007F24A8 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C05A9A29C8E0AA007F24A8 /* Bird.swift */; };
+		B3C05AA429CCBE33007F24A8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C05AA329CCBE33007F24A8 /* NetworkManager.swift */; };
+		B3C05AA629CCCDBB007F24A8 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C05AA529CCCDBB007F24A8 /* DataStore.swift */; };
+		B3C05AA829CCD4EF007F24A8 /* BirdsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C05AA729CCD4EF007F24A8 /* BirdsListTableViewController.swift */; };
+		B3C05AAA29CCD520007F24A8 /* BirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C05AA929CCD520007F24A8 /* BirdInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		B3C05A8F29C8DFEB007F24A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3C05A9129C8DFEB007F24A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C05A9A29C8E0AA007F24A8 /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
+		B3C05AA329CCBE33007F24A8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B3C05AA529CCCDBB007F24A8 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		B3C05AA729CCD4EF007F24A8 /* BirdsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdsListTableViewController.swift; sourceTree = "<group>"; };
+		B3C05AA929CCD520007F24A8 /* BirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 		B3C05A8229C8DFEA007F24A8 /* HW_Lesson3.2_Grossman */ = {
 			isa = PBXGroup;
 			children = (
+				B3C05AA229CCBE1C007F24A8 /* Services */,
 				B3C05A9C29C8E0BC007F24A8 /* Models */,
 				B3C05A9729C8E007007F24A8 /* App */,
 				B3C05A9D29C8E0D4007F24A8 /* ViewControllers */,
@@ -106,8 +115,19 @@
 			isa = PBXGroup;
 			children = (
 				B3C05A8729C8DFEA007F24A8 /* MainViewController.swift */,
+				B3C05AA729CCD4EF007F24A8 /* BirdsListTableViewController.swift */,
+				B3C05AA929CCD520007F24A8 /* BirdInfoViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B3C05AA229CCBE1C007F24A8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3C05AA329CCBE33007F24A8 /* NetworkManager.swift */,
+				B3C05AA529CCCDBB007F24A8 /* DataStore.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C05A8829C8DFEA007F24A8 /* MainViewController.swift in Sources */,
+				B3C05AA629CCCDBB007F24A8 /* DataStore.swift in Sources */,
+				B3C05AA429CCBE33007F24A8 /* NetworkManager.swift in Sources */,
+				B3C05AAA29CCD520007F24A8 /* BirdInfoViewController.swift in Sources */,
 				B3C05A8429C8DFEA007F24A8 /* AppDelegate.swift in Sources */,
+				B3C05AA829CCD4EF007F24A8 /* BirdsListTableViewController.swift in Sources */,
 				B3C05A9B29C8E0AA007F24A8 /* Bird.swift in Sources */,
 				B3C05A8629C8DFEA007F24A8 /* SceneDelegate.swift in Sources */,
 			);

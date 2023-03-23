@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Db-uC-0Ua">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -15,13 +15,222 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikY-s0-PaD">
+                                <rect key="frame" x="0.0" y="318" width="393" height="216"/>
+                                <color key="backgroundColor" red="0.95650631189346313" green="0.82832902669906616" blue="0.95678216218948364" alpha="0.20609995860927152" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your location to find out which birds were noticed around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAY-PM-xk6">
+                                <rect key="frame" x="16" y="191.33333333333334" width="361" height="96.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvT-EC-9iv">
+                                <rect key="frame" x="16" y="564" width="361" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Click to search">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7y-fm-84d"/>
+                                    <segue destination="y4v-Gp-gad" kind="show" identifier="showBirdList" id="Agn-S1-ecU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🦜" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynI-D4-mXi">
+                                <rect key="frame" x="16" y="103.66666666666666" width="361" height="71.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97208482027053833" green="0.90691512823104858" blue="0.91939479112625122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ikY-s0-PaD" secondAttribute="trailing" id="3rl-Mk-XQb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KvT-EC-9iv" secondAttribute="trailing" constant="16" id="622-Fe-9ZS"/>
+                            <constraint firstItem="ikY-s0-PaD" firstAttribute="top" secondItem="lAY-PM-xk6" secondAttribute="bottom" constant="30" id="Hyj-iC-f5X"/>
+                            <constraint firstItem="ynI-D4-mXi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U8n-fd-3cV"/>
+                            <constraint firstItem="KvT-EC-9iv" firstAttribute="top" secondItem="ikY-s0-PaD" secondAttribute="bottom" constant="30" id="ZEt-Q5-bpe"/>
+                            <constraint firstItem="ikY-s0-PaD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aBr-KY-vxQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lAY-PM-xk6" secondAttribute="trailing" constant="16" id="aTT-kT-hML"/>
+                            <constraint firstItem="ikY-s0-PaD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bGC-M1-Bd8"/>
+                            <constraint firstItem="lAY-PM-xk6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="dAo-XX-fVP"/>
+                            <constraint firstItem="lAY-PM-xk6" firstAttribute="top" secondItem="ynI-D4-mXi" secondAttribute="bottom" constant="16" id="dQ4-IW-m5m"/>
+                            <constraint firstItem="ikY-s0-PaD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eYI-Cl-8K3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ynI-D4-mXi" secondAttribute="trailing" constant="16" id="ibS-Jp-7Xb"/>
+                            <constraint firstItem="KvT-EC-9iv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qwz-41-V3X"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="o0e-Bq-c9t"/>
+                    <connections>
+                        <outlet property="countryUIpickerView" destination="ikY-s0-PaD" id="8sB-fq-P11"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31" y="4"/>
+            <point key="canvasLocation" x="875.57251908396938" y="0.70422535211267612"/>
+        </scene>
+        <!--Birds around you-->
+        <scene sceneID="ian-BH-YEJ">
+            <objects>
+                <tableViewController id="y4v-Gp-gad" customClass="BirdsListTableViewController" customModule="HW_Lesson3_2_Grossman" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="XYs-a3-0xJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Dnm-N1-Xne" detailTextLabel="KWA-EB-btw" style="IBUITableViewCellStyleSubtitle" id="9EQ-e2-a6A">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9EQ-e2-a6A" id="rJs-Q9-L22">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dnm-N1-Xne">
+                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KWA-EB-btw">
+                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="JfQ-45-F1g" kind="show" id="iqY-Ki-QT4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y4v-Gp-gad" id="npG-79-8Hg"/>
+                            <outlet property="delegate" destination="y4v-Gp-gad" id="IVj-Vh-55M"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Birds around you" id="meD-sH-AkT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsW-Yu-x9J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="1"/>
+        </scene>
+        <!--Bird Info View Controller-->
+        <scene sceneID="5yw-gx-O6p">
+            <objects>
+                <viewController id="JfQ-45-F1g" customClass="BirdInfoViewController" customModule="HW_Lesson3_2_Grossman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yJr-NR-lqi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="7Wh-KA-qZJ">
+                                <rect key="frame" x="42" y="222.66666666666663" width="309" height="407"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🦆 Common name:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYl-tp-shU">
+                                        <rect key="frame" x="0.0" y="0.0" width="207.33333333333334" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bird common name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqN-rc-ibp">
+                                        <rect key="frame" x="0.0" y="46.666666666666657" width="147.66666666666666" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👩‍🔬Scientific name:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSY-lF-NEZ">
+                                        <rect key="frame" x="0.0" y="85.000000000000028" width="206.33333333333334" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bird sci name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-1c-FRy">
+                                        <rect key="frame" x="0.0" y="131.66666666666666" width="102.66666666666667" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🗺 Location of observation:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w4-He-khN">
+                                        <rect key="frame" x="0.0" y="170.00000000000003" width="302" height="28.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xk-pS-XQk">
+                                        <rect key="frame" x="0.0" y="216.66666666666666" width="129" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📆 Date of last observation: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZI-0o-dAO">
+                                        <rect key="frame" x="0.0" y="255.00000000000003" width="309" height="28.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKW-r7-CX6">
+                                        <rect key="frame" x="0.0" y="301.66666666666674" width="36" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✏️ Amount of birds:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-1M-8bt">
+                                        <rect key="frame" x="0.0" y="340" width="217.33333333333334" height="28.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of birds" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4y-ku-RUZ">
+                                        <rect key="frame" x="0.0" y="386.66666666666674" width="123.66666666666667" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fhz-LW-iQr"/>
+                        <color key="backgroundColor" red="0.97208482027053833" green="0.90691512823104858" blue="0.91939479112625122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7Wh-KA-qZJ" firstAttribute="centerY" secondItem="yJr-NR-lqi" secondAttribute="centerY" id="YTs-G3-EFN"/>
+                            <constraint firstItem="7Wh-KA-qZJ" firstAttribute="centerX" secondItem="yJr-NR-lqi" secondAttribute="centerX" id="qj3-Kw-b5o"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tjI-Cp-dTV"/>
+                    <connections>
+                        <outlet property="commonNameLabel" destination="KqN-rc-ibp" id="8nU-x6-v0I"/>
+                        <outlet property="dateLastSeenLabel" destination="pKW-r7-CX6" id="LO0-ot-uNy"/>
+                        <outlet property="locationNameLabel" destination="9xk-pS-XQk" id="wHn-As-LL0"/>
+                        <outlet property="numberOfBirdsSeenLabel" destination="J4y-ku-RUZ" id="RDc-9J-BJI"/>
+                        <outlet property="scientificNamelabel" destination="yxs-1c-FRy" id="5EC-hK-faq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zc3-0j-yhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2397.709923664122" y="0.70422535211267612"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iNa-3M-nRU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Db-uC-0Ua" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DMn-Lf-Ohf">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yta-Gc-xJl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6j-3U-c4D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20.610687022900763" y="0.70422535211267612"/>
         </scene>
     </scenes>
     <resources>

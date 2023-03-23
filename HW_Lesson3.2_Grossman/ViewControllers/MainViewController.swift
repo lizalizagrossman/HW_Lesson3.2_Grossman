@@ -4,41 +4,74 @@
 //
 //  Created by Elizabeth on 20/03/2023.
 //
-enum Link: String {
-    case regionUrl = "https://api.ebird.org/v2/data/obs/IL/recent"
-}
 
 import UIKit
 
 final class MainViewController: UIViewController {
-
+    
+    //MARK: - IB Outlets
+    @IBOutlet var countryUIpickerView: UIPickerView!
+    
+    //MARK: - Private outlets
+    private let networkManager = NetworkManager.shared
+    private var countryChosen: Int! {
+        didSet {}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchBirds()
+        countryUIpickerView.delegate = self
+        countryUIpickerView.dataSource = self
     }
+    //MARK: - Navigation
+    
+    
+    //MARK: - IB Actions
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        
+    }
+    
+    
+    
+    //MARK: - Networking
+    
+    //MARK: - Private func
+    
+
+    
 }
-//MARK: - Networking
-extension MainViewController {
-    private func fetchBirds() {
-        guard let url = URL(string: Link.regionUrl.rawValue) else { return }
-        
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = ["X-eBirdApiToken": "cqcv7c11crts"]
-        
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No description")
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let birds = try decoder.decode([Bird].self, from: data)
-                print(birds)
-            } catch let error {
-                print(error)
-            }
-        }.resume()
+    //MARK: - UIPickerViewDataSource and UIPickerViewDelegate
+
+extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        print("pep")
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        Link.allCases.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        var countryTitle = ""
+        if row == 0 {
+            countryTitle = Link.israel.rawValue
+        } else if row == 1 {
+            countryTitle = Link.russia.rawValue
+        } else if row == 2 {
+            countryTitle = Link.belarus.rawValue
+        } else if row == 3 {
+            countryTitle = Link.israel.rawValue
+        } else if row == 4 {
+            countryTitle = Link.armenia.rawValue
+        } else if row == 5 {
+            countryTitle = Link.kazakhstan.rawValue
+        }
+        return countryTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+     {
+         countryChosen = row
     }
 }
