@@ -9,6 +9,7 @@ import UIKit
 
 final class BirdInfoViewController: UIViewController {
     
+    // MARK: - Public values
     var bird: Bird!
     
     // MARK: - IBOutlets
@@ -18,10 +19,12 @@ final class BirdInfoViewController: UIViewController {
     @IBOutlet var dateLastSeenLabel: UILabel!
     @IBOutlet var numberOfBirdsSeenLabel: UILabel!
     
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitles()
         navigationItem.title = bird.comName
+        navigationController?.navigationBar.tintColor = UIColor.darkGray
     }
     
     // MARK: - Private functions

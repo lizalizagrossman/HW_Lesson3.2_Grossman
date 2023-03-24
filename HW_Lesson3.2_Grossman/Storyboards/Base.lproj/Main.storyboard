@@ -17,7 +17,6 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikY-s0-PaD">
                                 <rect key="frame" x="0.0" y="318" width="393" height="216"/>
-                                <color key="backgroundColor" red="0.95650631189346313" green="0.82832902669906616" blue="0.95678216218948364" alpha="0.20609995860927152" colorSpace="custom" customColorSpace="sRGB"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your location to find out which birds were noticed around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAY-PM-xk6">
                                 <rect key="frame" x="16" y="191.33333333333334" width="361" height="96.666666666666657"/>
@@ -41,7 +40,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7y-fm-84d"/>
                                     <segue destination="y4v-Gp-gad" kind="show" identifier="showBirdList" id="Agn-S1-ecU"/>
                                 </connections>
                             </button>

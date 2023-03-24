@@ -9,14 +9,26 @@ import UIKit
 
 final class BirdsListTableViewController: UITableViewController {
     
+    // MARK: - Public values
     var country: Link!
     var birdsInfo: [Bird] = []
+    
+    // MARK: - Private values
     private let networkManager = NetworkManager.shared
     
+    // MARK: - Viewcontroller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBirds()
         tableView.rowHeight = 80
+        navigationController?.navigationBar.tintColor = UIColor.darkGray
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailsVC = segue.destination as? BirdInfoViewController
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        detailsVC?.bird = birdsInfo[indexPath.row]
     }
 
     // MARK: - Table view data source
@@ -33,15 +45,9 @@ final class BirdsListTableViewController: UITableViewController {
         cell.contentConfiguration = content
         return cell
     }
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailsVC = segue.destination as? BirdInfoViewController
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        detailsVC?.bird = birdsInfo[indexPath.row]
-    }
 }
 
-//MARK: - Networking
+    //MARK: - Networking
 
 private extension BirdsListTableViewController {
     func fetchBirds() {

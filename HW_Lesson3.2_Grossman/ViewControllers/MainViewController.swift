@@ -32,22 +32,11 @@ final class MainViewController: UIViewController {
             birdInfoVC?.country = countryChosen
         }
     }
-    
-    //MARK: - IB Actions
-    @IBAction func buttonTapped(_ sender: UIButton) {
-    }
-    
-    
-    //MARK: - Private func
-    
-
-    
 }
     //MARK: - UIPickerViewDataSource and UIPickerViewDelegate
 
 extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("pep")
         return 1
     }
     
@@ -60,9 +49,7 @@ extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
          let currentItem = countries[pickerView.selectedRow(inComponent: component)]
-         print(row)
          countryChosen = currentItem
     }
 }
