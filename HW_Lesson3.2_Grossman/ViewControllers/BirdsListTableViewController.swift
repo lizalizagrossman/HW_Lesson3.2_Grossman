@@ -8,36 +8,53 @@
 import UIKit
 
 final class BirdsListTableViewController: UITableViewController {
-
-    var birdsInfo: [Bird]!
+    
+    var country: Link!
+    var birdsInfo: [Bird] = []
+    private let networkManager = NetworkManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBirds()
+        tableView.rowHeight = 80
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        birdsInfo.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        let bird = birdsInfo[indexPath.row]
+        content.text = bird.comName
+        content.secondaryText = bird.locName
+        cell.contentConfiguration = content
+        return cell
     }
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let detailsVC = segue.destination as? BirdInfoViewController
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        detailsVC?.bird = birdsInfo[indexPath.row]
     }
 }
 
+//MARK: - Networking
+
 private extension BirdsListTableViewController {
     func fetchBirds() {
-        
-    }
+        networkManager.fetch(_type: [Bird].self, from: country.regionUrl) { [weak self] result in
+                    switch result {
+                    case .success(let courses):
+                        self?.birdsInfo = courses
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
 }

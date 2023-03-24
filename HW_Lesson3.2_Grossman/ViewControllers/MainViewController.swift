@@ -14,7 +14,8 @@ final class MainViewController: UIViewController {
     
     //MARK: - Private outlets
     private let networkManager = NetworkManager.shared
-    private var countryChosen: Int! {
+    private let countries = Link.allCases
+    private var countryChosen: Link = .israel {
         didSet {}
     }
     
@@ -22,18 +23,20 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         countryUIpickerView.delegate = self
         countryUIpickerView.dataSource = self
+        
     }
     //MARK: - Navigation
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBirdList" {
+            let birdInfoVC = segue.destination as? BirdsListTableViewController
+            birdInfoVC?.country = countryChosen
+        }
+    }
     
     //MARK: - IB Actions
     @IBAction func buttonTapped(_ sender: UIButton) {
-        
     }
     
-    
-    
-    //MARK: - Networking
     
     //MARK: - Private func
     
@@ -53,25 +56,15 @@ extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var countryTitle = ""
-        if row == 0 {
-            countryTitle = Link.israel.rawValue
-        } else if row == 1 {
-            countryTitle = Link.russia.rawValue
-        } else if row == 2 {
-            countryTitle = Link.belarus.rawValue
-        } else if row == 3 {
-            countryTitle = Link.israel.rawValue
-        } else if row == 4 {
-            countryTitle = Link.armenia.rawValue
-        } else if row == 5 {
-            countryTitle = Link.kazakhstan.rawValue
-        }
-        return countryTitle
+        return countries[row].description
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-     {
-         countryChosen = row
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+         let currentItem = countries[pickerView.selectedRow(inComponent: component)]
+         print(row)
+         countryChosen = currentItem
     }
 }
+
+

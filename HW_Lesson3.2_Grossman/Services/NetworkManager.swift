@@ -8,12 +8,13 @@
 import Foundation
 
 enum Link : String, CaseIterable {
+    
     case israel
     case russia
     case belarus
     case kazakhstan
     case armenia
-    
+ 
     var regionUrl: URL {
         switch self {
         case .israel:
@@ -28,21 +29,12 @@ enum Link : String, CaseIterable {
             return URL(string:"https://api.ebird.org/v2/data/obs/AM/recent")!
         }
     }
-    
-    var countryName: String {
-        switch self {
-        case .israel:
-            return "Israel"
-        case .russia:
-            return "Russia"
-        case .belarus:
-            return "Belarus"
-        case .kazakhstan:
-            return "Kazakhstan"
-        case .armenia:
-            return "Armenia"
-        }
-    }
+}
+
+extension Link: CustomStringConvertible {
+  var description: String {
+    rawValue.capitalized
+  }
 }
 
 enum NetworkError: Error {
@@ -55,21 +47,13 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchBirds(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-
-    }
-    
-    
-}
-
-//MARK: - Networking
-extension MainViewController {
-    private func fetchBirds() {
-        var request = URLRequest(url: Link.israel.regionUrl)
+    func fetch<T: Decodable>(_type: T.Type, from url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = ["X-eBirdApiToken": "cqcv7c11crts"]
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data else {
+                completion(.failure(.noData))
                 print(error?.localizedDescription ?? "No description")
                 return
             }
@@ -77,12 +61,19 @@ extension MainViewController {
             let decoder = JSONDecoder()
             
             do {
-                let birds = try decoder.decode([Bird].self, from: data)
-                print(birds)
-            } catch let error {
-                print(error)
+                let dataModel = try decoder.decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(dataModel))
+                }
+            } catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
+
     }
+    
+    
 }
+
+
 

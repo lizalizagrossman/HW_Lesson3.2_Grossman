@@ -8,7 +8,9 @@
 import UIKit
 
 final class BirdInfoViewController: UIViewController {
-
+    
+    var bird: Bird!
+    
     // MARK: - IBOutlets
     @IBOutlet var commonNameLabel: UILabel!
     @IBOutlet var scientificNamelabel: UILabel!
@@ -18,17 +20,16 @@ final class BirdInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitles()
+        navigationItem.title = bird.comName
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private functions
+    private func setTitles() {
+        commonNameLabel.text = bird.comName
+        scientificNamelabel.text = bird.sciName
+        locationNameLabel.text = bird.locName
+        dateLastSeenLabel.text = bird.obsDt
+        numberOfBirdsSeenLabel.text = "\(bird.howMany ?? 0)"
     }
-    */
-
 }
