@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum Link : String, CaseIterable {
     
@@ -37,39 +38,24 @@ extension Link: CustomStringConvertible {
   }
 }
 
-enum NetworkError: Error {
-    case noData
-    case decodingError
-}
-
 final class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}
     
-    func fetch<T: Decodable>(_type: T.Type, from url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = ["X-eBirdApiToken": "cqcv7c11crts"]
-        
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No description")
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let dataModel = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(dataModel))
+    func fetchbirds(from url: URL, completion: @escaping(Result<[Bird], AFError>) -> Void) {
+        AF.request(url, headers: ["X-eBirdApiToken": "cqcv7c11crts"])
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let birds = Bird.getBirds(from: value)
+                    completion(.success(birds))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
-            } catch {
-                completion(.failure(.decodingError))
             }
-        }.resume()
-
+        
     }
     
     

@@ -13,12 +13,18 @@ final class BirdsListTableViewController: UITableViewController {
     var country: Link!
     var birdsInfo: [Bird] = []
     
+    // MARK: - IBOutlets
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    
     // MARK: - Private values
     private let networkManager = NetworkManager.shared
     
     // MARK: - Viewcontroller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         fetchBirds()
         tableView.rowHeight = 80
         navigationController?.navigationBar.tintColor = UIColor.darkGray
@@ -51,16 +57,14 @@ final class BirdsListTableViewController: UITableViewController {
 
 private extension BirdsListTableViewController {
     func fetchBirds() {
-        networkManager.fetch(_type: [Bird].self, from: country.regionUrl) { [weak self] result in
-                    switch result {
-                    case .success(let courses):
-                        self?.birdsInfo = courses
-                        DispatchQueue.main.async {
-                            self?.tableView.reloadData()
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+        networkManager.fetchbirds(from: country.regionUrl) { [weak self] result in
+            switch result {
+            case .success(let birds):
+                self?.birdsInfo = birds
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
+    }
 }
